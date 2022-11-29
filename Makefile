@@ -73,6 +73,9 @@ docker-%:
 
 docker-build:
 	@docker run --rm -w /go/src/github.com/google/cadvisor -v ${PWD}:/go/src/github.com/google/cadvisor golang:1.19 make build
+	
+docker-wf:
+	@docker run -t wavefronthq/cadvisor:betatest -f deploy/Dockerfile .
 
 presubmit: lint
 	@echo ">> checking go mod tidy"
